@@ -34,7 +34,7 @@ VITE_CERTIFICATE_VERIFY_BASE_URL=https://your-vercel-domain.vercel.app/verify
 VITE_GITHUB_REPOSITORY=your-org/niem-certificate-platform
 ```
 
-ถ้ายังไม่ตั้ง `VITE_GOOGLE_SHEETS_WEB_APP_URL` ระบบจะใช้ mock sync เพื่อให้ทดลอง UI ได้ก่อน
+production ต้องตั้ง `VITE_GOOGLE_SHEETS_WEB_APP_URL` เสมอ เพราะ frontend จะอ่านและเขียนทะเบียนจาก endpoint นี้โดยตรง
 
 ## Google Sheets Schema
 
@@ -54,6 +54,12 @@ VITE_GITHUB_REPOSITORY=your-org/niem-certificate-platform
 | updatedAt | เวลาปรับปรุงล่าสุด |
 
 ## Apps Script Endpoint
+
+frontend ต้องรองรับอย่างน้อย 3 action:
+
+- `GET ?action=certificate.list` เพื่อดึงทะเบียนใบประกาศทั้งหมด
+- `POST certificate.create` เพื่อสร้างใบประกาศใหม่
+- `POST certificate.renew` เพื่อบันทึกการต่ออายุ
 
 ตัวอย่าง payload ที่ frontend ส่งไป:
 

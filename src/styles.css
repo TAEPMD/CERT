@@ -317,6 +317,23 @@ h1 {
   margin-top: 24px;
 }
 
+.registry-banner {
+  margin-bottom: 14px;
+  padding: 12px 14px;
+  border: 1px solid #b9d8d6;
+  border-radius: 8px;
+  background: #eff8f7;
+  color: var(--teal-dark);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.registry-banner.error {
+  border-color: #efc0c0;
+  background: #fff4f4;
+  color: var(--red);
+}
+
 .metric {
   display: flex;
   align-items: center;
@@ -396,6 +413,31 @@ h1 {
   overflow: auto;
   border: 1px solid var(--line);
   border-radius: 8px;
+}
+
+.table-empty,
+.detail-empty {
+  display: grid;
+  justify-items: center;
+  text-align: center;
+}
+
+.table-empty {
+  gap: 8px;
+  min-height: 220px;
+  padding: 28px 18px;
+  color: var(--muted);
+}
+
+.table-empty strong,
+.detail-empty h2 {
+  color: var(--ink);
+}
+
+.table-empty span,
+.detail-empty p {
+  max-width: 320px;
+  line-height: 1.6;
 }
 
 table {
@@ -480,6 +522,12 @@ tbody tr:hover,
 .detail-card,
 .form-panel {
   padding: 18px;
+}
+
+.detail-empty {
+  gap: 10px;
+  min-height: 220px;
+  align-content: center;
 }
 
 .detail-head {
@@ -1073,6 +1121,11 @@ button:disabled {
   color: var(--red);
 }
 
+.public-result.empty .spin {
+  color: var(--teal);
+  animation: spin 1s linear infinite;
+}
+
 .public-result.empty p {
   margin-top: 8px;
   color: var(--muted);
@@ -1113,6 +1166,16 @@ button:disabled {
 .public-nav {
   color: #ffffff;
   background: rgba(255, 255, 255, 0.08);
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @media (max-width: 1180px) {
@@ -1296,5 +1359,266 @@ button:disabled {
   .public-detail-list div {
     grid-template-columns: 1fr;
     gap: 4px;
+  }
+}
+
+/* ============================================
+   MODERN UI ENHANCEMENTS
+   ============================================ */
+
+/* Smooth transitions */
+* {
+  transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Button hover effects */
+.primary-action:hover,
+.submit-button:hover {
+  background: var(--teal-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 107, 104, 0.3);
+}
+
+.secondary-action:hover,
+.renew-button:hover {
+  background: var(--surface-strong);
+  border-color: var(--teal);
+  transform: translateY(-1px);
+}
+
+.primary-action:active,
+.secondary-action:active,
+.submit-button:active,
+.renew-button:active {
+  transform: translateY(0);
+}
+
+/* Card hover effects */
+.metric:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(12, 48, 50, 0.12);
+}
+
+.feature-strip article:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(12, 48, 50, 0.15);
+}
+
+/* Table row hover enhancement */
+tbody tr {
+  transition: background-color 0.15s ease, transform 0.1s ease;
+}
+
+tbody tr:hover {
+  transform: scale(1.002);
+}
+
+/* Form input focus */
+input:focus,
+select:focus {
+  border-color: var(--teal);
+  box-shadow: 0 0 0 3px rgba(0, 107, 104, 0.15), 0 2px 8px rgba(0, 107, 104, 0.08);
+}
+
+/* Nav item transitions */
+.nav-item {
+  transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+  transform: translateX(2px);
+}
+
+/* Toast animation */
+.toast {
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Certificate art glow effect */
+.certificate-art {
+  position: relative;
+  overflow: hidden;
+}
+
+.certificate-art::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(0, 107, 104, 0.03) 0%, transparent 70%);
+  animation: rotate 20s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Verify card float animation */
+.verify-card {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* Status badge pulse for pending */
+.status.pending {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* QR preview hover */
+.qr-preview {
+  transition: all 0.3s ease;
+}
+
+.qr-preview:hover {
+  border-color: var(--teal);
+  background: #e8f4f3;
+}
+
+/* Result card body animation */
+.result-card-body {
+  animation: fadeInUp 0.4s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Landing hero text reveal */
+.landing-copy h1 {
+  animation: fadeInUp 0.6s ease-out 0.1s both;
+}
+
+.landing-copy p {
+  animation: fadeInUp 0.6s ease-out 0.2s both;
+}
+
+.landing-actions {
+  animation: fadeInUp 0.6s ease-out 0.3s both;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #b8d4d2;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--teal);
+}
+
+/* Selection color */
+::selection {
+  background: var(--teal-soft);
+  color: var(--teal-dark);
+}
+
+/* Print styles */
+@media print {
+  .sidebar,
+  .topbar,
+  .public-header,
+  .workflow-actions,
+  .toast,
+  .renew-button,
+  .submit-button {
+    display: none !important;
+  }
+
+  .app-shell {
+    display: block;
+  }
+
+  .main-panel,
+  .detail-card,
+  .public-result {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Dark mode support (future-ready) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0a1a1a;
+    --surface: #122626;
+    --surface-strong: #1a3333;
+    --ink: #e8f4f4;
+    --muted: #8aa8a6;
+    --line: #1f3d3d;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --line: #000000;
+    --muted: #000000;
+  }
+
+  .status {
+    border: 2px solid currentColor;
   }
 }
